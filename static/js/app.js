@@ -1,4 +1,4 @@
-  function randomCircles() {
+function randomCircles() {
   var canvas = document.querySelector("#canvas");
   var ctx = canvas.getContext("2d");
   var colors = [
@@ -12,16 +12,21 @@
     "#33658A",
   ];
 
-  let randomX = parseInt(Math.random() * (50 - 0) + 0);
-  let randomY = parseInt(Math.random() * (60 - 0) + 0);
+  var randomX = Math.ceil( 50 * Math.random());
+  var randomY = Math.ceil( 50 * Math.random());
   let randomIndex = parseInt(Math.random() * (colors.length - 0) + 0);
-  let randomRadius = parseInt(Math.random() * (50 - 2) + 2);
+  var randomRadius = Math.ceil( 50 * Math.random());
   let randomColor = colors[randomIndex];
 
+  ctx.strokeStyle = `${randomColor}`;
   ctx.fillStyle = `${randomColor}`;
-  ctx.arc(50, 50, 20, 0, 360);
+  ctx.beginPath();
+  ctx.arc(randomX, randomY, randomRadius 0, 2*Math.PI);
+  ctx.stroke();
+  ctx.fill();   
+  ctx.closePath();
 
-  //setTimeout(randomCircles,200);
+  setTimeout(randomCircles,200);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
